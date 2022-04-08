@@ -1,0 +1,4 @@
+The Game itself is self explanatory; however, there is a username and password. 
+
+Username: SpaceArenaAdmin
+Password:STEMProject
