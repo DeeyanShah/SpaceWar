@@ -4,6 +4,88 @@ import random
 import time
 import os
 import platform
+from tkinter import *
+from tkinter import messagebox
+from time import sleep
+
+def loadbar(iteration, total, prefix='', suffix='', decimals=1, length=100, fill='>'):
+    percent = ('{0:.' + str(decimals) + 'f}').format(100 * (iteration/float(total)))
+    filledLength = int(length * iteration // total)
+    bar = fill * filledLength + '-' * (length-filledLength)
+    print(f'\r{prefix} |{bar}| {percent}% {suffix}', end='\r')
+    if iteration == total:
+        print()
+
+items = list(range(0,50))
+l = len(items)
+
+loadbar(0, l, prefix='Progress:', suffix='Complete', length=l)
+for i, item in enumerate(items):
+    sleep(0.1)
+    loadbar(i + 1, l, prefix='Progress:', suffix='Complete', length=l)
+
+class Login:
+        def __init__(self,root):
+                self.root = root
+                self.root.title("Login System")
+                self.root.geometry("1199x600+100+50")
+                Frame_login = Frame(self.root, bg="white")
+                Frame_login.place(x=330, y=150, width=500, height=400)
+
+                title = Label(Frame_login, text="Login Here", font=("Impact", 35, "bold"), fg="#6162FF", bg="white").place(x=90,y=30)
+                subtitle = Label(Frame_login, text="Members Login Area", font=("Goudy old style", 15, "bold"), fg="#1d1d1d", bg="white").place(x=90,y=100)
+
+
+                lbl_user = Label(Frame_login, text="Username", font=("Goudy old style", 15, "bold"), fg="grey", bg="white").place(x=90,y=148)
+                self.username = Entry(Frame_login, font=("Goudy old style", 15), bg="#E7E6E6")
+                self.username.place(x=90, y=178, width=320, height=35)
+
+                lbl_password = Label(Frame_login, text="Password", font=("Goudy old style", 15, "bold"), fg="grey", bg="white").place(x=90,y=230)
+                self.password = Entry(Frame_login, font=("Goudy old style", 15), bg="#E7E6E6")
+                self.password.place(x=90, y=268, width=320, height=35)
+
+                #forget = Button(Frame_login, text="Forgot Password?", bd = 0, cursor="hand2", font=("Goudy old style", 12), fg="#6162FF", bg="white").place(x=90,y=320)
+
+                submit = Button(Frame_login, command=self.check_function, cursor="hand2", text="Login", bd = 0, font=("Goudy old style", 15), bg="#6162FF", fg="white").place(x=90,y=360, width=180, height=40)
+
+        def check_function(self):
+
+            while True:
+
+                #1
+                if self.username.get()=="" or self.password.get()=="":
+                        messagebox.showerror("Error", "All Fields are Required",parent=self.root)
+                        break
+                    
+
+                elif self.username.get()=="SpaceArenaAdmin" or self.password.get()=="STEMProject":
+                         #messagebox.showinfo("Welcome", f"Welcome {self.username.get()}")
+                         messagebox.showerror("Error", "Invalid Username or Password",parent=self.root)
+                         break
+                    
+
+
+                else:
+                    messagebox.showinfo("Welcome", f"Welcome {self.username.get()}")
+                        
+                        
+
+
+
+            root.destroy()
+
+                
+
+
+
+                       
+
+root = Tk()
+obj = Login(root)
+root.mainloop()
+
+#root.destroy()
+
 
 
 if platform.system() == "Windows":
@@ -966,3 +1048,5 @@ while True:
         
         # Clear everything
         pen.clear()
+
+
