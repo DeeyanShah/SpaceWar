@@ -54,11 +54,11 @@ class Login:
         while True:
 
             #1
-            if self.username.get()=="" or self.password.get() == "":
+            if self.username.get()=="" and self.password.get() == "":
                 messagebox.showerror("Error", "All Fields are Required",parent=self.root)
                 break
 
-            elif self.username.get()=="Deeyan" or "Addison" or "Ava" or "Ayush" or "Isabelle" or "Jada" or "Jayce" or "Keira" or "Kiara" or "Kody" or "Krupa" or "Lily" or "Mahima" or "Nicholas" or "Rahul" or "Rudra" or "Sarah" or "Sia" or "Thomas" or "Zachary" or self.password.get()=="Shah" or "Carr" or "Khatiwada" or "Myneni" or "Tee" or "Harris" or "Miller" or "Karnes" or "Cruz" or "Li" or "Williamson" or "Pai" or "Acosta" or "Saravanan" or "Sharma" or "Lee" or "Ratwani" or "Cooper" or "Consoli":
+            elif self.username.get()=="Deeyan" or "Addison" or "Ava" or "Ayush" or "Isabelle" or "Jada" or "Jayce" or "Keira" or "Kiara" or "Kody" or "Krupa" or "Lily" or "Mahima" or "Nicholas" or "Rahul" or "Rudra" or "Sarah" or "Sia" or "Thomas" or "Zachary" and self.password.get()=="Shah" or "Carr" or "Khatiwada" or "Myneni" or "Tee" or "Harris" or "Miller" or "Karnes" or "Cruz" or "Li" or "Williamson" or "Pai" or "Acosta" or "Saravanan" or "Sharma" or "Lee" or "Ratwani" or "Cooper" or "Consoli":
                 messagebox.showinfo("Welcome", f"Welcome {self.username.get()}")
                 root.destroy()
                 
@@ -70,8 +70,8 @@ class Login:
                         Frame_login2 = Frame(self.root2, bg="white")
                         Frame_login2.place(x=330, y=150, width=500, height=400)
 
-                        title2 = Label(Frame_login2, text="Login Here", font=("Impact", 35, "bold"), fg="#6162FF", bg="white").place(x=90,y=30)
-                        subtitle2 = Label(Frame_login2, text="Members Login Area", font=("Goudy old style", 15, "bold"), fg="#1d1d1d", bg="white").place(x=90,y=100)
+                        title2 = Label(Frame_login2, text="Choose Game:", font=("Impact", 35, "bold"), fg="#6162FF", bg="white").place(x=90,y=30)
+                        subtitle2 = Label(Frame_login2, text="Enter either Space Arena or Snake Game!", font=("Goudy old style", 15, "bold"), fg="#1d1d1d", bg="white").place(x=90,y=100)
 
 
                         lbl_user2 = Label(Frame_login2, text="Enter the game You Want to Play: ", font=("Goudy old style", 15, "bold"), fg="grey", bg="white").place(x=90,y=148)
@@ -100,7 +100,7 @@ class Login:
                             elif self.username2.get()=="Space Arena":
                                                          #messagebox.showinfo("Welcome!")
                                                          #break
-                                #root.destroy()
+                                root2.destroy()
                                 wn = turtle.Screen()
 
                                 if platform.system() == "Windows":
@@ -992,8 +992,8 @@ class Login:
                                                         if player.health <= 0:
                                                             player.reset()
                                                             player.lives -= 1
-                                                            if player.lives == 0:
-                                                                print("GAME OVER")
+                                                        if player.lives == 0:
+                                                           wn.destroy()     
                                                         else:
                                                             if sprite.health > 0:
                                                                 player.health -= random.randint(int(sprite.health / 2.0), int(sprite.health))
@@ -1069,6 +1069,7 @@ class Login:
 
                                                 
                             elif self.username2.get() == "Snake Game":
+                                root2.destroy()
                                 delay = 0.1
 
                                 # Score
@@ -1076,11 +1077,11 @@ class Login:
                                 high_score = 0
 
                                 # Set up the screen
-                                wn = turtle.Screen()
-                                wn.title("Snake Game by @TokyoEdTech")
-                                wn.bgcolor("green")
-                                wn.setup(width=600, height=600)
-                                wn.tracer(0) # Turns off the screen updates
+                                window = turtle.Screen()
+                                window.title("Snake Game by Deeyan Shah")
+                                window.bgcolor("green")
+                                window.setup(width=600, height=600)
+                                window.tracer(0) 
 
                                 # Snake head
                                 head = turtle.Turtle()
@@ -1102,14 +1103,14 @@ class Login:
                                 segments = []
 
                                 # Pen
-                                pen = turtle.Turtle()
-                                pen.speed(0)
-                                pen.shape("square")
-                                pen.color("white")
-                                pen.penup()
-                                pen.hideturtle()
-                                pen.goto(0, 260)
-                                pen.write("Score: 0  High Score: 0", align="center", font=("Courier", 24, "normal"))
+                                pencil = turtle.Turtle()
+                                pencil.speed(0)
+                                pencil.shape("square")
+                                pencil.color("white")
+                                pencil.penup()
+                                pencil.hideturtle()
+                                pencil.goto(0, 260)
+                                pencil.write("Score: 0  High Score: 0", align="center", font=("Courier", 24, "normal"))
 
                                 # Functions
                                 def go_up():
@@ -1146,15 +1147,15 @@ class Login:
                                         head.setx(x + 20)
 
                                 # Keyboard bindings
-                                wn.listen()
-                                wn.onkeypress(go_up, "w")
-                                wn.onkeypress(go_down, "s")
-                                wn.onkeypress(go_left, "a")
-                                wn.onkeypress(go_right, "d")
+                                window.listen()
+                                window.onkeypress(go_up, "Up")
+                                window.onkeypress(go_down, "Down")
+                                window.onkeypress(go_left, "Left")
+                                window.onkeypress(go_right, "Right")
 
                                 # Main game loop
                                 while True:
-                                    wn.update()
+                                    window.update()
 
                                     # Check for a collision with the border
                                     if head.xcor()>290 or head.xcor()<-290 or head.ycor()>290 or head.ycor()<-290:
@@ -1175,8 +1176,8 @@ class Login:
                                         # Reset the delay
                                         delay = 0.1
 
-                                        pen.clear()
-                                        pen.write("Score: {}  High Score: {}".format(score, high_score), align="center", font=("Courier", 24, "normal")) 
+                                        pencil.clear()
+                                        pencil.write("Score: {}  High Score: {}".format(score, high_score), align="center", font=("Courier", 24, "normal")) 
 
 
                                     # Check for a collision with the food
@@ -1203,8 +1204,8 @@ class Login:
                                         if score > high_score:
                                             high_score = score
                                         
-                                        pen.clear()
-                                        pen.write("Score: {}  High Score: {}".format(score, high_score), align="center", font=("Courier", 24, "normal")) 
+                                        pencil.clear()
+                                        pencil.write("Score: {}  High Score: {}".format(score, high_score), align="center", font=("Courier", 24, "normal")) 
 
                                     # Move the end segments first in reverse order
                                     for index in range(len(segments)-1, 0, -1):
@@ -1241,15 +1242,16 @@ class Login:
                                             delay = 0.1
                                         
                                             # Update the score display
-                                            pen.clear()
-                                            pen.write("Score: {}  High Score: {}".format(score, high_score), align="center", font=("Courier", 24, "normal"))
+                                            pencil.clear()
+                                            pencil.write("Score: {}  High Score: {}".format(score, high_score), align="center", font=("Courier", 24, "normal"))
 
                                     time.sleep(delay)
 
-                                    wn.mainloop()
+                                window.mainloop()
 
                             else:
                                 messagebox.showerror("Error", "Invalid Game Name",parent=self.root2)
+                                break
 
                 root2 = Tk()
                 obj2 = chooseGame(root2)
@@ -1257,14 +1259,8 @@ class Login:
 
             else:
                 messagebox.showerror("Error", "Invalid Username or Password",parent=self.root)
+                break
 
 root=Tk()
 obj = Login(root)
 root.mainloop()
-
-
-
-
-
-
-               
