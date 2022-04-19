@@ -28,7 +28,11 @@ for i, item in enumerate(items):
 
 class Login:
     def __init__(self,root):
+        name = "Deeyan" or "Addison" or "Ava" or "Ayush" or "Isabelle" or "Jada" or "Jayce" or "Keira" or "Kiara" or "Kody" or "Krupa" or "Lily" or "Mahima" or "Nicholas" or "Rahul" or "Rudra" or "Sarah" or "Sia" or "Thomas" or "Zachary"
+        name2 = "Shah" or "Carr" or "Khatiwada" or "Myneni" or "Tee" or "Harris" or "Miller" or "Karnes" or "Cruz" or "Li" or "Williamson" or "Pai" or "Acosta" or "Saravanan" or "Sharma" or "Lee" or "Ratwani" or "Cooper" or "Consoli"
         self.root = root
+        self.name = name
+        self.name2 = name2
         self.root.title("Login System")
         self.root.geometry("1199x600+100+50")
         Frame_login = Frame(self.root, bg="white")
@@ -58,7 +62,11 @@ class Login:
                 messagebox.showerror("Error", "All Fields are Required",parent=self.root)
                 break
 
-            elif self.username.get()=="Deeyan" or "Addison" or "Ava" or "Ayush" or "Isabelle" or "Jada" or "Jayce" or "Keira" or "Kiara" or "Kody" or "Krupa" or "Lily" or "Mahima" or "Nicholas" or "Rahul" or "Rudra" or "Sarah" or "Sia" or "Thomas" or "Zachary" and self.password.get()=="Shah" or "Carr" or "Khatiwada" or "Myneni" or "Tee" or "Harris" or "Miller" or "Karnes" or "Cruz" or "Li" or "Williamson" or "Pai" or "Acosta" or "Saravanan" or "Sharma" or "Lee" or "Ratwani" or "Cooper" or "Consoli":
+            elif self.username.get()!= self.name and self.password.get() != self.name2:
+                messagebox.showerror("Error", "Incorrect Username or Password, please try again!",parent=self.root)
+                break
+
+            elif self.username.get()== self.name and self.password.get() == self.name2:
                 messagebox.showinfo("Welcome", f"Welcome {self.username.get()}")
                 root.destroy()
                 
@@ -1154,6 +1162,9 @@ class Login:
                                         head.setx(x + 20)
 
                                 # Keyboard bindings
+
+                                #game_state = "splash"
+                                
                                 window.listen()
                                 window.onkeypress(go_up, "Up")
                                 window.onkeypress(go_down, "Down")
