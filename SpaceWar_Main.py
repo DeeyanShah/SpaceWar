@@ -101,7 +101,7 @@ class Login:
                                                          #messagebox.showinfo("Welcome!")
                                                          #break
                                 root2.destroy()
-                                wn = turtle.Screen()
+                                #wn = turtle.Screen()
 
                                 if platform.system() == "Windows":
                                     try:
@@ -1070,6 +1070,13 @@ class Login:
                                                 
                             elif self.username2.get() == "Snake Game":
                                 root2.destroy()
+
+                                window = turtle.Screen()
+                                window.title("Snake Game by Deeyan Shah")
+                                window.bgcolor("green")
+                                window.setup(width=600, height=600)
+                                window.tracer(0)
+                                
                                 delay = 0.1
 
                                 # Score
@@ -1103,14 +1110,14 @@ class Login:
                                 segments = []
 
                                 # Pen
-                                pencil = turtle.Turtle()
-                                pencil.speed(0)
-                                pencil.shape("square")
-                                pencil.color("white")
-                                pencil.penup()
-                                pencil.hideturtle()
-                                pencil.goto(0, 260)
-                                pencil.write("Score: 0  High Score: 0", align="center", font=("Courier", 24, "normal"))
+                                pen = turtle.Turtle()
+                                pen.speed(0)
+                                pen.shape("square")
+                                pen.color("white")
+                                pen.penup()
+                                pen.hideturtle()
+                                pen.goto(0, 260)
+                                pen.write("Score: 0  High Score: 0", align="center", font=("Courier", 24, "normal"))
 
                                 # Functions
                                 def go_up():
@@ -1176,8 +1183,8 @@ class Login:
                                         # Reset the delay
                                         delay = 0.1
 
-                                        pencil.clear()
-                                        pencil.write("Score: {}  High Score: {}".format(score, high_score), align="center", font=("Courier", 24, "normal")) 
+                                        pen.clear()
+                                        pen.write("Score: {}  High Score: {}".format(score, high_score), align="center", font=("Courier", 24, "normal")) 
 
 
                                     # Check for a collision with the food
@@ -1204,8 +1211,8 @@ class Login:
                                         if score > high_score:
                                             high_score = score
                                         
-                                        pencil.clear()
-                                        pencil.write("Score: {}  High Score: {}".format(score, high_score), align="center", font=("Courier", 24, "normal")) 
+                                        pen.clear()
+                                        pen.write("Score: {}  High Score: {}".format(score, high_score), align="center", font=("Courier", 24, "normal")) 
 
                                     # Move the end segments first in reverse order
                                     for index in range(len(segments)-1, 0, -1):
@@ -1242,8 +1249,8 @@ class Login:
                                             delay = 0.1
                                         
                                             # Update the score display
-                                            pencil.clear()
-                                            pencil.write("Score: {}  High Score: {}".format(score, high_score), align="center", font=("Courier", 24, "normal"))
+                                            pen.clear()
+                                            pen.write("Score: {}  High Score: {}".format(score, high_score), align="center", font=("Courier", 24, "normal"))
 
                                     time.sleep(delay)
 
