@@ -1001,7 +1001,9 @@ class Login:
                                                             player.reset()
                                                             player.lives -= 1
                                                         if player.lives == 0:
-                                                           wn.destroy()     
+                                                           print("GAME OVER")
+                                                           wn.clear()
+                                                           wn.destroy()
                                                         else:
                                                             if sprite.health > 0:
                                                                 player.health -= random.randint(int(sprite.health / 2.0), int(sprite.health))
